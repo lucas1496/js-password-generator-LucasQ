@@ -24,12 +24,13 @@ var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 // Space is for the Uppercase conversion
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-// Creates a choices variable to store what choices user makes
+// Creates a choices variable to store password with the choices user makes
 var choices;
 
 // Function to create password
 function generatePassword() {
   var passwordLength = window.prompt("How many characters would you like your password to have?");
+  console.log(passwordLength);
   if (!passwordLength) {
       window.alert("This needs a value");
   } else if (passwordLength < 8) {
@@ -38,9 +39,13 @@ function generatePassword() {
     window.alert("Password length must be no more than 128 characters");
   } else {
     var specialchar = window.confirm("Click OK to confirm including special characters");
+    console.log(specialchar);
     var numchar = window.confirm("Click OK to confirm including numeric characters");
+    console.log(numchar);
     var lowerchar = window.confirm("Click OK to confirm including lowercase characters");
+    console.log(lowerchar);
     var upperchar = window.confirm("Click OK to confirm including uppercase characters");
+    console.log(upperchar);
   };
 
   // These if statements will now start creating the password following the given criteria by the user
@@ -75,6 +80,12 @@ function generatePassword() {
   // If user chooses only 1 option
   } else if (specialchar) {
     choices = scharacter;
+  } else if (numchar) {
+    choices = number;
+  } else if (lowerchar) {
+    choices = lowercase;
+  } else if (upperchar) {
+    choicees = uppercase;
   };
 
   // lengthHolder variable is an array placeholder for the lngth input by the user
