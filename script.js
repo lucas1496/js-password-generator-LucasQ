@@ -27,7 +27,6 @@ var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 // Creates a choices variable to store what choices user makes
 var choices;
 
-
 // Function to create password
 function generatePassword() {
   var passwordLength = window.prompt("How many characters would you like your password to have?");
@@ -62,7 +61,20 @@ function generatePassword() {
     choices = number.concat(lowercase, uppercase);
   // If user chooses 2 options
   } else if (specialchar && numchar) {
-    choices = scharacter.concat(number)
+    choices = scharacter.concat(number);
+  } else if (specialchar && lowerchar) {
+    choices = scharacter.concat(lowercase);
+  } else if (specialchar && upperchar) {
+    choices = scharacter.concat(uppercase);
+  } else if (numchar && lowerchar) {
+    choices = number.concat(lowercase);
+  } else if (numchar && upperchar) {
+    choices = number.concat(uppercase);
+  } else if (lowerchar && upperchar) {
+    choices = lowercase.concat(uppercase);
+  // If user chooses only 1 option
+  } else if (specialchar) {
+    choices = scharacter;
   };
 
   // lengthHolder variable is an array placeholder for the lngth input by the user
@@ -73,11 +85,13 @@ function generatePassword() {
   for (var i = 0; i < passwordLength; i++) {
       var pickChoices = choices[Math.floor(Math.random() * choices.length)];
       lengthHolder.push(pickChoices);
+      console.log(lengthHolder);
+      console.log(choices);
   }
   // This joins the password array and converts it to a string
-  // Worked with a tutor to incorporate this option
   var password = lengthHolder.join("");
   UserInput(password);
+  console.log(password);
   return password;
 }
 // This puts the password value into the textbox
