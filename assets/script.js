@@ -85,7 +85,7 @@ function generatePassword() {
   } else if (lowerchar) {
     choices = lowercase;
   } else if (upperchar) {
-    choicees = uppercase;
+    choices = uppercase;
   };
 
   // lengthHolder variable is an array placeholder for the lngth input by the user
